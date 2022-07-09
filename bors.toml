@@ -3,6 +3,10 @@ status = [
     "check",
 ]
 
+pr_status = [
+    "check",
+]
+
 # Enable as soon as there is a CODEOWNERS file
 # use_codeowners = false
 
