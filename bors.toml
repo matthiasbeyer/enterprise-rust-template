@@ -1,0 +1,10 @@
+# Must pass on the merge with the master branch
+status = [
+    "cargo-check",
+    "cargo-clippy",
+    "cargo-deny",
+    "cargo-doc",
+    "cargo-fmt",
+    "cargo-outdated",
+    "cargo-test",
+]
