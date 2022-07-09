@@ -3,6 +3,9 @@ status = [
     "check",
 ]
 
+# Small timeout for now, for faster iteration on bors testing
+timeout_sec = 300
+
 # Enable as soon as there is a CODEOWNERS file
 # use_codeowners = false
 
