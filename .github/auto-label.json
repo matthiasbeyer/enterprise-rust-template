@@ -1,8 +1,0 @@
-{
-  "rules": {
-    "bin": ["example-bin/"],
-    "lib": ["example-lib"],
-    "actions": ".github",
-    "repo": "./*.md"
-  }
-}
