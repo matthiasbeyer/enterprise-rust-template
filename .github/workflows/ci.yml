@@ -163,7 +163,7 @@ jobs:
 
   # TIER 1
   cross-aarch64:
-    name: build-aarch64:
+    name: build-aarch64
     needs: check
     runs-on: ubuntu-latest
 
