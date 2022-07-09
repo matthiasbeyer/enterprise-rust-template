@@ -1,0 +1,77 @@
+on:
+  pull_request:
+
+name: Pull Request Checks
+
+jobs:
+  block-fixup:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Block fixup commit merge
+      uses: 13rac1/block-fixup-merge-action@v2.0.0
+
+
+  rd-redpen:
+    name: rd-redpen
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+      - name: redpen-github-pr-review
+        uses: tsuyoshicho/action-redpen@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          basedir: "doc"
+          targets: "*.md"
+          config: "config/redpen-conf-en.xml"
+
+
+  rd-languagetool:
+    name: rd-languagetool
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: reviewdog/action-languagetool@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          level: info
+
+
+  rd-alex:
+    name: rd-alex
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: reviewdog/action-alex@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          level: warning
+
+  rd-markdownlint:
+    name: rd-markdownlint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: markdownlint
+        uses: reviewdog/action-markdownlint@v0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+
+
+  rd-misspell:
+    name: rd-misspell
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: misspell
+        uses: reviewdog/action-misspell@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          locale: "US"
+
