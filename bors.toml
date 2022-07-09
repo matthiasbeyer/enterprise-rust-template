@@ -1,12 +1,6 @@
 # Must pass on the merge with the master branch
 status = [
-    "deny",
-    "fmt",
     "check",
-    "doc",
-    "test",
-    "clippy",
-    "outdated",
 ]
 
 # Enable as soon as there is a CODEOWNERS file
