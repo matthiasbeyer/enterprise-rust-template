@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  cargo-deny:
+  deny:
     name: deny
     runs-on: ubuntu-latest
     strategy:
