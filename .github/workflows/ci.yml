@@ -24,6 +24,19 @@ jobs:
         command: check ${{ matrix.checks }}
 
 
+  fmt:
+    name: format
+    runs-on: ubuntu-latest
+    needs: deny
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: -- --check
+
+
   check:
     needs: deny
     name: check
@@ -49,19 +62,6 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: check
-
-
-  fmt:
-    name: format
-    runs-on: ubuntu-latest
-    needs: check
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions-rs/cargo@v1
-        with:
-          command: fmt
-          args: -- --check
 
 
   doc:
