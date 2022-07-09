@@ -1,6 +1,6 @@
 # enterprise-rust-template
 
-[![Bors enabled](https://bors.tech/images/badge_small.svg)](https://app.bors.tech/repositories/46479)
+[![Bors enabled](https://bors.tech/images/badge_small.svg)](https://app.bors.tech/repositories/46481)
 
 This is an _opinionated_ template repository for rust projects.
 It is "enterprise" because it contains _all the things_ you could ever want from
