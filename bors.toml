@@ -1,0 +1,19 @@
+# Must pass on the merge with the master branch
+status = [
+    "deny",
+    "fmt",
+    "check",
+    "doc",
+    "test",
+    "clippy",
+    "outdated",
+]
+
+# Enable as soon as there is a CODEOWNERS file
+use_codeowners = false
+
+# I cannot do this on my own repository, because I cannot approve my own
+# PRs.
+
+# required_approvals = 1
+# up_to_date_approvals = true
