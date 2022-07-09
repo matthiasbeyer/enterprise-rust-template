@@ -4,7 +4,7 @@ status = [
 ]
 
 # Enable as soon as there is a CODEOWNERS file
-use_codeowners = false
+# use_codeowners = false
 
 # I cannot do this on my own repository, because I cannot approve my own
 # PRs.
