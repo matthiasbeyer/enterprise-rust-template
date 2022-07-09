@@ -163,7 +163,7 @@ jobs:
 
   # TIER 1
   cross-aarch64:
-    name: build-aarch64
+    name: cross-aarch64
     needs: check
     runs-on: ubuntu-latest
 
@@ -184,8 +184,8 @@ jobs:
 
   # TIER 1
   cross-aarch64-test:
-    name: tests-aarch64
-    needs: build-aarch64
+    name: cross-aarch64-test
+    needs: cross-aarch64
     runs-on: ubuntu-latest
 
     steps:
@@ -206,8 +206,8 @@ jobs:
 
 
   # TIER 2 w/ host tools
-  cross-arm7-32:
-    name: build-armv7-32bit
+  cross-armv7-32:
+    name: cross-armv7-32
     needs: check
     runs-on: ubuntu-latest
 
@@ -227,9 +227,9 @@ jobs:
 
 
   # TIER 2 w/ host tools
-  cross-arm7-32-test:
-    name: tests-armv7-32bit
-    needs: build-armv7-32bit
+  cross-armv7-32-test:
+    name: cross-armv7-32-test
+    needs: cross-armv7-32
     runs-on: ubuntu-latest
 
     steps:
@@ -249,7 +249,7 @@ jobs:
 
   # TIER 2 w/ host tools
   cross-aarch64-musl:
-    name: build-arm64-musl
+    name: cross-aarch64-musl
     needs: check
     runs-on: ubuntu-latest
 
@@ -270,7 +270,7 @@ jobs:
 
   # TIER 2 w/ host tools
   cross-riscv:
-    name: build-riscv
+    name: cross-riscv
     needs: check
     runs-on: ubuntu-latest
 
@@ -290,7 +290,7 @@ jobs:
 
   # TIER 2 w/ host tools
   cross-x8664-freebsd:
-    name: build-freebsd
+    name: cross-x8664-freebsd
     needs: check
     runs-on: ubuntu-latest
 
