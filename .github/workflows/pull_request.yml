@@ -87,3 +87,32 @@ jobs:
           python-version: '3.x'
       - run: pip install gitlint
       - run: gitlint --commits $(git merge-base origin/master HEAD)..HEAD
+
+  apidiff:
+    name: apidiff
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: 1.60.0
+          override: true
+      - uses: swatinem/rust-cache@v1
+      - run: cargo install --locked cargo-public-api
+      - run: cargo public-api --diff-git-checkouts $(git merge-base origin/master HEAD) HEAD | tee apidiff.txt
+      - name: "Post to PR"
+        uses: EliLillyCo/github-actions-post-to-pr@1.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          post_to_pr_definition: |
+            [
+              {
+                "message_file": "./apidiff.txt",
+                "title": "Difference in public API",
+                "collapsible": true
+              }
+            ]
+
