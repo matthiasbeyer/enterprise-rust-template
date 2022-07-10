@@ -28,7 +28,7 @@ such a repository:
         - [ ] ARM
         - [x] RISC-V
     - [ ] caching
-- [ ] dependabot
+- [x] dependabot
 - [ ] stalebot
 - [ ] community automation
     - [ ] commit linting
