@@ -22,7 +22,7 @@ such a repository:
         - [x] clippy
         - [ ] coverage
         - [x] cargo-deny
-        - [ ] cargo-outdated
+        - [x] cargo-outdated
     - [ ] testing
     - [ ] crosscompilation
         - [ ] ARM
