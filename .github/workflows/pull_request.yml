@@ -108,7 +108,6 @@ jobs:
       - run: cargo install --locked cargo-public-api
       - run: echo -e "### API changes\n\n" >> apidiff.txt
       - run: echo -e "<details><summary>API diff in ${{ matrix.crate }}</summary>\n" >> apidiff.txt
-      - run: echo "RUNNING: cargo public-api --manifest-path ${{ matrix.crate }}/Cargo.toml --diff-git-checkouts $(git merge-base origin/master $GITHUB_HEAD_REF) $GITHUB_HEAD_REF |& tee -a apidiff.txt"
       - run: cargo public-api --manifest-path ${{ matrix.crate }}/Cargo.toml --diff-git-checkouts $(git merge-base origin/master $GITHUB_HEAD_REF) $GITHUB_HEAD_REF |& tee -a apidiff.txt
       - run: echo -e "</details>\n" >> apidiff.txt
       - run: cat apidiff.txt
