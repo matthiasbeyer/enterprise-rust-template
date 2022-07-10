@@ -316,3 +316,18 @@ jobs:
           command: build
           args: --target=x86_64-unknown-freebsd
 
+  ci-success:
+    name: CI
+    if: ${{ success() }}
+    needs:
+      - check
+      - clippy
+      - deny
+      - doc
+      - fmt
+      - outdated
+      - test
+    runs-on: ubuntu-latest
+    steps:
+      - name: CI succeeded
+        run: exit 0
