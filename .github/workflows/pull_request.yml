@@ -108,7 +108,9 @@ jobs:
       - run: cargo install --locked cargo-public-api
       - run: echo -e "### API changes\n\n" >> apidiff.txt
       - run: echo -e "<details><summary>API diff in ${{ matrix.crate }}</summary>\n" >> apidiff.txt
+      - run: echo "\`\`\`" >> apidiff.txt
       - run: cargo public-api --manifest-path ${{ matrix.crate }}/Cargo.toml --diff-git-checkouts $(git merge-base origin/master $GITHUB_SHA) $GITHUB_SHA |& tee -a apidiff.txt
+      - run: echo "\`\`\`" >> apidiff.txt
       - run: echo -e "</details>\n" >> apidiff.txt
       - name: "Post to PR"
         uses: machine-learning-apps/pr-comment@master
