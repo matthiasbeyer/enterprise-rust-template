@@ -103,10 +103,10 @@ sections:
 
 <details>
 <summary>
-    Github Pages
+    GitHub Pages
 </summary>
 
-Github Pages are used for
+GitHub Pages are used for
 
 - [ ] Code documentation
 - [ ] website (using zola)
