@@ -104,15 +104,8 @@ jobs:
       - run: cargo install --locked cargo-public-api
       - run: cargo public-api --diff-git-checkouts $(git merge-base origin/master HEAD) HEAD | tee apidiff.txt
       - name: "Post to PR"
-        uses: EliLillyCo/github-actions-post-to-pr@1.2
+        uses: machine-learning-apps/pr-comment@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          post_to_pr_definition: |
-            [
-              {
-                "message_file": "./apidiff.txt",
-                "title": "Difference in public API",
-                "collapsible": true
-              }
-            ]
-
+          path: apidiff.txt
