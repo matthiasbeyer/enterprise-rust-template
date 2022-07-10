@@ -38,7 +38,7 @@ Dependabot is enabled so that dependencies are always up-to-date.
 ### Stalebot
 
 Issues and PRs are automatically marked as stale by stalebot.
-PRs are closed after some period of time, but issues are not.
+PRs are closed after some time, but issues are not.
 </details>
 
 <details>
