@@ -65,7 +65,7 @@ Builds are done for the following distributions right now:
     CI checks
 </summary>
 
-The following checks are currently executed by CI:
+The following checks are currently done by CI:
 
 - [x] tests
 - [x] clippy
