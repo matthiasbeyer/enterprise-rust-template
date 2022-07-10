@@ -26,7 +26,7 @@ This section contains documentation for the "features" this repository provides.
 
 [Bors is a GitHub bot](https://bors.tech)
 that prevents merge skew / semantic merge conflicts, so when a developer
-checks out the main branch, they can expect all of the tests to pass
+checks out the main branch, they can expect all the tests to pass
 out-of-the-box.
 
 ### Dependabot
