@@ -92,6 +92,10 @@ jobs:
     name: apidiff
     runs-on: ubuntu-latest
     if: github.event_name == 'pull_request'
+    strategy:
+      matrix:
+        crate:
+          - example-lib
     steps:
       - uses: actions/checkout@v3
         with:
@@ -102,10 +106,12 @@ jobs:
           override: true
       - uses: swatinem/rust-cache@v1
       - run: cargo install --locked cargo-public-api
-      - run: cargo public-api --diff-git-checkouts $(git merge-base origin/master HEAD) HEAD | tee apidiff.txt
+      - run: echo "API Diff in ${{ matrix.crate }}" >> apidiff-${{ matrix.crate }}.txt
+      - run: cargo public-api --manifest-path ${{ matrix.crate }}/Cargo.toml --diff-git-checkouts $(git merge-base origin/master HEAD) HEAD |& tee -a apidiff-${{ matrix.crate }}.txt
       - name: "Post to PR"
         uses: machine-learning-apps/pr-comment@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          path: apidiff.txt
+          path: apidiff-${{ matrix.crate }}.txt
+
