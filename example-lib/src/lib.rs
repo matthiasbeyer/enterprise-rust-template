@@ -1,8 +1,3 @@
-pub fn foo() -> usize {
-    1
-}
-
-
 #[cfg(test)]
 mod tests {
     #[test]
