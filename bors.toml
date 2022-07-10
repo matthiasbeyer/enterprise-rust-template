@@ -2,9 +2,11 @@
 status = [
     "check",
     "clippy",
-    "deny",
+    "deny (advisories)",
+    "deny (bans licenses sources)",
     "doc",
     "fmt",
     "outdated",
-    "test",
+    "test (stable)",
+    "test (1.60.0)",
 ]
