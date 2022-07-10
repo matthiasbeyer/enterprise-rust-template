@@ -316,6 +316,9 @@ jobs:
           command: build
           args: --target=x86_64-unknown-freebsd
 
+  # We need some "accummulation" job here because bors fails (timeouts) to
+  # listen on matrix builds.
+  # Hence, we have some kind of dummy here that bors can listen on
   ci-success:
     name: CI
     if: ${{ success() }}
