@@ -21,7 +21,7 @@ such a repository:
     - [ ] checks
         - [x] clippy
         - [ ] coverage
-        - [ ] cargo-deny
+        - [x] cargo-deny
         - [ ] cargo-outdated
     - [ ] testing
     - [ ] crosscompilation
