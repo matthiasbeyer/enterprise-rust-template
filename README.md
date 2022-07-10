@@ -26,7 +26,7 @@ such a repository:
     - [ ] testing
     - [ ] crosscompilation
         - [ ] ARM
-        - [ ] RISC-V
+        - [x] RISC-V
     - [ ] caching
 - [ ] dependabot
 - [ ] stalebot
