@@ -13,7 +13,6 @@ MSRV for this repository is currently: 1.60.0
 That matters explicitely because we run some tools only for this version, e.g.:
 clippy.
 
-
 ## Features
 
 This section contains documentation for the "features" this repository provides.
@@ -30,7 +29,6 @@ that prevents merge skew / semantic merge conflicts, so when a developer
 checks out the main branch, they can expect all of the tests to pass
 out-of-the-box.
 
-
 ### Dependabot
 
 Dependabot is enabled so that dependencies are always up to date.
@@ -40,7 +38,6 @@ Dependabot is enabled so that dependencies are always up to date.
 Issues and PRs are automatically marked as stale by stalebot.
 PRs are closed after some period of time, but issues are not.
 </details>
-
 
 <details>
 <summary>
@@ -60,7 +57,6 @@ Builds are done for the following distributions right now:
 - [ ] yocto
 </details>
 
-
 <details>
 <summary>
     CI checks
@@ -75,7 +71,6 @@ The following checks are currently executed by CI:
 - [x] cargo-outdated
 </details>
 
-
 <details>
 <summary>
     CI cross compilation
@@ -86,7 +81,6 @@ The following targets are currently enabled for cross compilation:
 - [ ] ARM
 - [x] RISC-V
 </details>
-
 
 <details>
 <summary>
@@ -107,7 +101,6 @@ sections:
     - [ ] language checks
 </details>
 
-
 <details>
 <summary>
     Github Pages
@@ -119,7 +112,6 @@ Github Pages are used for
 - [ ] website (using zola)
 </details>
 
-
 <details>
 <summary>
     Release automation
@@ -127,7 +119,6 @@ Github Pages are used for
 
 Nothing is implemented for release automation yet.
 </details>
-
 
 ## License
 
