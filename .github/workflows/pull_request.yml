@@ -107,7 +107,7 @@ jobs:
       - uses: swatinem/rust-cache@v1
       - run: cargo install --locked cargo-public-api
       - run: echo "API Diff in ${{ matrix.crate }}" >> apidiff-${{ matrix.crate }}.txt
-      - run: cargo public-api --manifest-path ${{ matrix.crate }}/Cargo.toml --diff-git-checkouts $(git merge-base origin/master HEAD) HEAD |& tee -a apidiff-${{ matrix.crate }}.txt
+      - run: cargo public-api --manifest-path ${{ matrix.crate }}/Cargo.toml --diff-git-checkouts $(git merge-base origin/master $GITHUB_HEAD_REF) $GITHUB_HEAD_REF |& tee -a apidiff-${{ matrix.crate }}.txt
       - name: "Post to PR"
         uses: machine-learning-apps/pr-comment@master
         env:
