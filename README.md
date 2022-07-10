@@ -6,7 +6,7 @@ This is an _opinionated_ template repository for rust projects.
 It is "enterprise" because it contains _all the things_ you could ever want from
 such a repository:
 
-- [ ] bors
+- [x] bors
 - [ ] CI
     - [ ] Builds for different platforms
         - [ ] alpine
@@ -16,7 +16,7 @@ such a repository:
         - [ ] nixos
         - [ ] RHEL
         - [ ] static using musl
-        - [ ] ubuntu
+        - [x] ubuntu
         - [ ] yocto
     - [ ] checks
         - [ ] clippy
