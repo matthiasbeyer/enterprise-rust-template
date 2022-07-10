@@ -29,7 +29,7 @@ such a repository:
         - [x] RISC-V
     - [ ] caching
 - [x] dependabot
-- [ ] stalebot
+- [x] stalebot
 - [ ] community automation
     - [ ] commit linting
     - [ ] first time contributor message
