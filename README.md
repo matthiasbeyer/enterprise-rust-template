@@ -57,6 +57,7 @@ Builds are done for the following distributions right now:
 - [ ] static using musl
 - [x] ubuntu
 - [ ] yocto
+
 </details>
 
 <details>
@@ -71,6 +72,7 @@ The following checks are currently executed by CI:
 - [ ] coverage
 - [x] cargo-deny
 - [x] cargo-outdated
+
 </details>
 
 <details>
@@ -82,6 +84,7 @@ The following targets are currently enabled for cross compilation:
 
 - [ ] ARM
 - [x] RISC-V
+
 </details>
 
 <details>
@@ -101,6 +104,7 @@ sections:
 - [ ] automatic reviews
   - [ ] missspell checks
   - [ ] language checks
+
 </details>
 
 <details>
@@ -112,6 +116,7 @@ GitHub Pages are used for
 
 - [ ] Code documentation
 - [ ] website (using zola)
+
 </details>
 
 <details>
