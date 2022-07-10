@@ -1,12 +1,4 @@
 # Must pass on the merge with the master branch
 status = [
-    "check",
-    "clippy",
-    "deny (advisories)",
-    "deny (bans licenses sources)",
-    "doc",
-    "fmt",
-    "outdated",
-    "test (stable)",
-    "test (1.60.0)",
+    "CI"
 ]
