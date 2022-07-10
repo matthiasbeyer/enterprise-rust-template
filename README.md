@@ -99,7 +99,7 @@ sections:
 - [x] commits are linted using [gitlint](https://jorisroovers.com/gitlint/)
 - [x] blocking of "!fixup"/"!squash" commits
 - [ ] first-time contributor message
-- [ ] automatic labeling
+- [x] automatic labeling
 - [ ] automatic assigning issues/PRs
 - [ ] automatic reviews
   - [ ] missspell checks
