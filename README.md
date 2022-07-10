@@ -33,7 +33,7 @@ such a repository:
 - [ ] community automation
     - [ ] commit linting
     - [ ] first time contributor message
-    - [ ] blocking of "!fixup"/"!squash" commits
+    - [x] blocking of "!fixup"/"!squash" commits
     - [ ] automatic labeling
     - [ ] automatic assigning issues/PRs
     - [ ] automatic reviews
