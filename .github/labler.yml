@@ -1,0 +1,17 @@
+repo:
+- './*.md'
+
+actions:
+- './.github/**/*'
+
+example-bin:
+- './example-bin/**/*'
+
+example-lib:
+- './example-lib/**/*'
+
+doc:
+- doc/**/*
+
+tests:
+- tests/**/*
