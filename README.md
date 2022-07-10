@@ -99,8 +99,8 @@ sections:
 - [ ] automatic labeling
 - [ ] automatic assigning issues/PRs
 - [ ] automatic reviews
-    - [ ] missspell checks
-    - [ ] language checks
+  - [ ] missspell checks
+  - [ ] language checks
 </details>
 
 <details>
