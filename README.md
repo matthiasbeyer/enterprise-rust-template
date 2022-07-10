@@ -19,7 +19,7 @@ such a repository:
         - [x] ubuntu
         - [ ] yocto
     - [ ] checks
-        - [ ] clippy
+        - [x] clippy
         - [ ] coverage
         - [ ] cargo-deny
         - [ ] cargo-outdated
