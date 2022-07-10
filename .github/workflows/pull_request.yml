@@ -106,12 +106,14 @@ jobs:
           override: true
       - uses: swatinem/rust-cache@v1
       - run: cargo install --locked cargo-public-api
-      - run: echo "API Diff in ${{ matrix.crate }}" >> apidiff-${{ matrix.crate }}.txt
-      - run: cargo public-api --manifest-path ${{ matrix.crate }}/Cargo.toml --diff-git-checkouts $(git merge-base origin/master $GITHUB_HEAD_REF) $GITHUB_HEAD_REF |& tee -a apidiff-${{ matrix.crate }}.txt
+      - run: echo -e "### API changes\n\n" >> apidiff.txt
+      - run: echo -e "<details><summary>API diff in ${{ matrix.crate }}</summary>\n" >> apidiff.txt
+      - run: cargo public-api --manifest-path ${{ matrix.crate }}/Cargo.toml --diff-git-checkouts $(git merge-base origin/master $GITHUB_HEAD_REF) $GITHUB_HEAD_REF |& tee -a apidiff.txt
+      - run: echo -e "</details>\n" >> apidiff.txt
       - name: "Post to PR"
         uses: machine-learning-apps/pr-comment@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          path: apidiff-${{ matrix.crate }}.txt
+          path: apidiff.txt
 
