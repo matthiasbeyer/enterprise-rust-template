@@ -2,7 +2,12 @@ name: CI
 
 on:
   push:
+    branches: [master, staging, trying]
   pull_request:
+    branches: [master]
+
+env:
+  CARGO_TERM_COLOR: always
 
 jobs:
   deny:
@@ -19,7 +24,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: EmbarkStudios/cargo-deny-action@v1
+    - name: cargo-deny
+      uses: EmbarkStudios/cargo-deny-action@v1
       with:
         command: check ${{ matrix.checks }}
 
@@ -31,7 +37,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions-rs/cargo@v1
+      - name: cargo-fmt
+        uses: actions-rs/cargo@v1
         with:
           command: fmt
           args: -- --check
@@ -58,7 +65,7 @@ jobs:
           toolchain: ${{ matrix.rust }}
           override: true
       - uses: swatinem/rust-cache@v1
-      - name: Run cargo check
+      - name: cargo-check
         uses: actions-rs/cargo@v1
         with:
           command: check
@@ -71,7 +78,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions-rs/cargo@v1
+      - name: cargo-doc
+        uses: actions-rs/cargo@v1
         with:
           command: doc
           args: --all-features --workspace --no-deps --document-private-items
@@ -97,7 +105,7 @@ jobs:
           toolchain: ${{ matrix.rust }}
           override: true
       - uses: swatinem/rust-cache@v1
-      - name: Run cargo test
+      - name: cargo-test
         uses: actions-rs/cargo@v1
         with:
           command: test
@@ -116,7 +124,7 @@ jobs:
           override: true
       - uses: swatinem/rust-cache@v1
       - run: rustup component add clippy
-      - name: cargo clippy
+      - name: cargo-clippy
         run: cargo clippy --all --all-targets --all-features -- -D warnings
 
 
@@ -308,3 +316,21 @@ jobs:
           command: build
           args: --target=x86_64-unknown-freebsd
 
+  # We need some "accummulation" job here because bors fails (timeouts) to
+  # listen on matrix builds.
+  # Hence, we have some kind of dummy here that bors can listen on
+  ci-success:
+    name: CI
+    if: ${{ success() }}
+    needs:
+      - check
+      - clippy
+      - deny
+      - doc
+      - fmt
+      - outdated
+      - test
+    runs-on: ubuntu-latest
+    steps:
+      - name: CI succeeded
+        run: exit 0
