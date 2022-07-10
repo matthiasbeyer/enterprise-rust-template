@@ -31,7 +31,7 @@ out-of-the-box.
 
 ### Dependabot
 
-Dependabot is enabled so that dependencies are always up to date.
+Dependabot is enabled so that dependencies are always up-to-date.
 
 ### Stalebot
 
