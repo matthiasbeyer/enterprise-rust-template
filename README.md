@@ -1,5 +1,7 @@
 # enterprise-rust-template
 
+<!-- markdownlint-disable MD033 -->
+
 [![Bors enabled](https://bors.tech/images/badge_small.svg)](https://app.bors.tech/repositories/46481)
 
 This is an _opinionated_ template repository for rust projects.
