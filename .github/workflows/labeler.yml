@@ -4,7 +4,7 @@ on:
     types: [opened, synchronized]
 
 jobs:
-  labler:
+  labeler:
     permissions:
       contents: read
       pull-requests: write
