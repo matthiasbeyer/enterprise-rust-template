@@ -14,7 +14,8 @@ jobs:
       if: ${{ failure() }}
       uses: mshick/add-pr-comment@v1
         with:
-          message: "There's a !fixup or !squash commit in this PR, so it was blocked from merging."
+          message: |
+            There's a fixup or squash commit in this PR, so it was blocked from merging.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
