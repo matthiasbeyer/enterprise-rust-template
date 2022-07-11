@@ -11,6 +11,14 @@ jobs:
     - name: Block fixup commit merge
       uses: 13rac1/block-fixup-merge-action@v2.0.0
 
+    - name: "Post comment on failure"
+      if: ${{ failure() }}
+      uses: mshick/add-pr-comment@v1
+        with:
+          message: "There's a !fixup or !squash commit in this PR, so it was blocked from merging."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
   rd-redpen:
     name: rd-redpen
