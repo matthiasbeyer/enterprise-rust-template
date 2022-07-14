@@ -168,153 +168,56 @@ jobs:
       - name: cargo-outdated
         run: cargo outdated --root-deps-only --color always
 
-
-  # TIER 1
-  cross-aarch64:
-    name: cross-aarch64
+  cross:
+    name: cross
     needs: check
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        target:
+          # TIER 1
+          - aarch64-unknown-linux-gnu
+          # TIER 2 w/ host tools
+          - armv7-unknown-linux-gnueabihf
+          - aarch64-unknown-linux-musl
+          - riscv64gc-unknown-linux-gnu
+          - x86_64-unknown-freebsd
     steps:
       - uses: actions/checkout@v3
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: 1.60.0
-          target: aarch64-unknown-linux-gnu
+          target: ${{ matrix.target }}
           override: true
       - uses: swatinem/rust-cache@v1
       - uses: actions-rs/cargo@v1
         with:
           use-cross: true
           command: build
-          args: --target=aarch64-unknown-linux-gnu
+          args: --target=${{ matrix.target }}
 
-
-  # TIER 1
-  cross-aarch64-test:
-    name: cross-aarch64-test
-    needs: cross-aarch64
+  cross-test:
+    name: cross-test
+    needs: cross
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        target:
+          - aarch64-unknown-linux-gnu
+          - armv7-unknown-linux-gnueabihf
     steps:
-      - name: checkout
-        uses: actions/checkout@v3
-
+      - uses: actions/checkout@v3
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: 1.60.0
-          target: aarch64-unknown-linux-gnu
+          target: ${{ matrix.target }}
           override: true
       - uses: swatinem/rust-cache@v1
       - uses: actions-rs/cargo@v1
         with:
           use-cross: true
           command: test
-          args: --target=aarch64-unknown-linux-gnu
-
-
-  # TIER 2 w/ host tools
-  cross-armv7-32:
-    name: cross-armv7-32
-    needs: check
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: 1.60.0
-          target: armv7-unknown-linux-gnueabihf
-          override: true
-      - uses: swatinem/rust-cache@v1
-      - uses: actions-rs/cargo@v1
-        with:
-          use-cross: true
-          command: build
-          args: --target=armv7-unknown-linux-gnueabihf
-
-
-  # TIER 2 w/ host tools
-  cross-armv7-32-test:
-    name: cross-armv7-32-test
-    needs: cross-armv7-32
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: 1.60.0
-          target: armv7-unknown-linux-gnueabihf
-          override: true
-      - uses: swatinem/rust-cache@v1
-      - uses: actions-rs/cargo@v1
-        with:
-          use-cross: true
-          command: test
-          args: --target=armv7-unknown-linux-gnueabihf
-
-
-  # TIER 2 w/ host tools
-  cross-aarch64-musl:
-    name: cross-aarch64-musl
-    needs: check
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: 1.60.0
-          target: aarch64-unknown-linux-musl
-          override: true
-      - uses: swatinem/rust-cache@v1
-      - uses: actions-rs/cargo@v1
-        with:
-          use-cross: true
-          command: build
-          args: --target=aarch64-unknown-linux-musl
-
-
-  # TIER 2 w/ host tools
-  cross-riscv:
-    name: cross-riscv
-    needs: check
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: 1.60.0
-          target: riscv64gc-unknown-linux-gnu
-          override: true
-      - uses: swatinem/rust-cache@v1
-      - uses: actions-rs/cargo@v1
-        with:
-          use-cross: true
-          command: build
-          args: --target=riscv64gc-unknown-linux-gnu
-
-  # TIER 2 w/ host tools
-  cross-x8664-freebsd:
-    name: cross-x8664-freebsd
-    needs: check
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: 1.60.0
-          target: x86_64-unknown-freebsd
-          override: true
-      - uses: swatinem/rust-cache@v1
-      - uses: actions-rs/cargo@v1
-        with:
-          use-cross: true
-          command: build
-          args: --target=x86_64-unknown-freebsd
+          args: --target=${{ matrix.target }}
 
   # We need some "accummulation" job here because bors fails (timeouts) to
   # listen on matrix builds.
