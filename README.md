@@ -12,7 +12,7 @@ such a repository.
 
 MSRV for this repository is currently: 1.60.0
 
-That matters explicitely because we run some tools only for this version, e.g.:
+That matters explicitly because we run some tools only for this version, e.g.:
 clippy.
 
 ## Features
