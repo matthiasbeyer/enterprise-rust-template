@@ -1,0 +1,34 @@
+name: Bug report
+description: If something isn't working
+title: "<title>"
+labels: bug
+body:
+- type: textarea
+  attributes:
+    label: Version Information
+    description: |
+      Please run:
+      * cargo --version
+      * rustc --version
+  validations:
+    required: true
+- type: textarea
+  attributes:
+   label: What is the expected behavior?
+   description: What is the expected behavior?
+  validations:
+    required: true
+- type: textarea
+  attributes:
+   label: What is the actual behavior?
+   description: What is the actual behavior?
+  validations:
+    required: true
+- type: textarea
+  attributes:
+   label: Other
+   description: Other
+  validations:
+    required: false
+
+
