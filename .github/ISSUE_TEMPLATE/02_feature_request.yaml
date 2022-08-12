@@ -1,0 +1,34 @@
+name: Feature request
+description: If you have a feature request
+title: "<title>"
+labels: enhancement
+body:
+- type: textarea
+  attributes:
+   label: Context
+   description: What are you trying to do and how would you want to do it differently? Is it something you currently you cannot do? Is this related to an issue/problem?
+  validations:
+    required: true
+- type: textarea
+  attributes:
+   label: Alternatives
+   description: What are you trying to do and how would you want to do it differently? Is it something you currently you cannot do? Is this related to an issue/problem?
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Has the feature been requested before?
+    description: Please provide a link to the issue.
+  validations:
+      required: true
+- type: dropdown
+  id: featurepr
+  attributes:
+    label: If the feature request is approved, would you be willing to submit a PR?
+    description: Help can be provided if you need assistance submitting a PR
+    multiple: false
+    options:
+      - 'Yes'
+      - 'No'
+  validations:
+      required: true
