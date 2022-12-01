@@ -224,6 +224,16 @@ jobs:
           command: test
           args: --target=${{ matrix.target }}
 
+  flake-check:
+    name: flake-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.0.2
+      - uses: cachix/install-nix-action@v17
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+      - run: nix --extra-experimental-features "nix-command flakes" flake check
+
   # We need some "accummulation" job here because bors fails (timeouts) to
   # listen on matrix builds.
   # Hence, we have some kind of dummy here that bors can listen on
@@ -238,6 +248,7 @@ jobs:
       - fmt
       - outdated
       - test
+      - flake-check
     runs-on: ubuntu-latest
     steps:
       - name: CI succeeded
