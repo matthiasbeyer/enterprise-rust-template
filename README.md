@@ -8,6 +8,12 @@ This is an _opinionated_ template repository for rust projects.
 It is "enterprise" because it contains _all the things_ you could ever want from
 such a repository.
 
+## Nix
+
+This repository is nix ready. That means that a flake is added for your
+conveniance as well as actions workflows for working with nix and cachix
+caching.
+
 ## MSRV
 
 MSRV for this repository is currently: 1.60.0
