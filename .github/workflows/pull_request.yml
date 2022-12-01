@@ -83,7 +83,7 @@ jobs:
         with:
           toolchain: nightly
       - uses: swatinem/rust-cache@v2
-      - run: cargo install --locked cargo-public-api
+      - run: cargo install --locked cargo-public-api@0.24.0
       - run: echo -e "### API changes\n\n" >> apidiff.txt
       - run: echo -e "<details><summary>API diff in ${{ matrix.crate }}</summary>\n" >> apidiff.txt
       - run: echo "\`\`\`" >> apidiff.txt
@@ -91,9 +91,11 @@ jobs:
       - run: echo "\`\`\`" >> apidiff.txt
       - run: echo -e "</details>\n" >> apidiff.txt
       - name: "Post to PR"
-        uses: machine-learning-apps/pr-comment@master
+        uses: peter-evans/create-or-update-comment
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          path: apidiff.txt
+          issue-number: ${{ github.event.issue.number }}
+          reactions: eyes
+          body-file: apidiff.txt
 
