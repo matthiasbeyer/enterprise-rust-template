@@ -91,9 +91,11 @@ jobs:
       - run: echo "\`\`\`" >> apidiff.txt
       - run: echo -e "</details>\n" >> apidiff.txt
       - name: "Post to PR"
-        uses: machine-learning-apps/pr-comment@master
+        uses: peter-evans/create-or-update-comment
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          path: apidiff.txt
+          issue-number: ${{ github.event.issue.number }}
+          reactions: eyes
+          body-file: apidiff.txt
 
