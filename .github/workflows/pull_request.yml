@@ -83,7 +83,7 @@ jobs:
           toolchain: nightly
           override: true
       - uses: swatinem/rust-cache@v2
-      - run: cargo install --locked cargo-public-api
+      - run: cargo install --locked cargo-public-api@0.24.0
       - run: echo -e "### API changes\n\n" >> apidiff.txt
       - run: echo -e "<details><summary>API diff in ${{ matrix.crate }}</summary>\n" >> apidiff.txt
       - run: echo "\`\`\`" >> apidiff.txt
