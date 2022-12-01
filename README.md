@@ -14,6 +14,10 @@ This repository is nix ready. That means that a flake is added for your
 conveniance as well as actions workflows for working with nix and cachix
 caching.
 
+For caching with cachix, you need to add a github secret from cachix.
+Read more
+[here](https://nix.dev/tutorials/continuous-integration-github-actions)
+
 ## MSRV
 
 MSRV for this repository is currently: 1.60.0
