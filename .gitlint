@@ -117,7 +117,7 @@ contrib=CC1, CC2
 # E.g. Ignore all lines that start with 'Co-Authored-By'
 # regex=^Co-Authored-By
 
-# [ignore-by-author-name]
+[ignore-by-author-name]
 # Ignore certain rules for commits of which the author name matches a regex
 # E.g. Match commits made by dependabot
 # regex=(.*)dependabot(.*)
