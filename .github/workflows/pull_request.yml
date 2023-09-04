@@ -8,7 +8,7 @@ jobs:
     name: rd-redpen
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: true
       - name: redpen-github-pr-review
@@ -25,7 +25,7 @@ jobs:
     name: rd-languagetool
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: reviewdog/action-languagetool@v1
         with:
           github_token: ${{ secrets.github_token }}
@@ -37,7 +37,7 @@ jobs:
     name: rd-alex
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: reviewdog/action-alex@v1
         with:
           github_token: ${{ secrets.github_token }}
@@ -48,7 +48,7 @@ jobs:
     name: rd-markdownlint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: markdownlint
         uses: reviewdog/action-markdownlint@v0
         with:
@@ -60,7 +60,7 @@ jobs:
     name: rd-misspell
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: misspell
         uses: reviewdog/action-misspell@v1
         with:
@@ -75,7 +75,7 @@ jobs:
         crate:
           - example-lib
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Install toolchain
